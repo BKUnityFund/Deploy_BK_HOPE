@@ -3,6 +3,12 @@
 # from transformers import T5ForConditionalGeneration, AutoTokenizer
 # import os
 
+# torch
+# transformers
+# protobuf 
+# tiktoken
+# sentencepiece
+
 # # Configure logging
 # logging.basicConfig(level=logging.INFO)
 # logger = logging.getLogger(__name__)

@@ -13,10 +13,10 @@ from app.db.schemas.response.paginated_response import PaginatedResponse  # nế
 from app.db.crud.donation import get_all_donations
 from app.db.crud.collaborator import get_all_collaborator
 from math import ceil
-from app.model_AI.content_summarization_processor import (
-    summarize_text,
-    load_model_and_tokenizer
-)
+# from app.model_AI.content_summarization_processor import (
+#     summarize_text,
+#     load_model_and_tokenizer
+# )
 from app.db.crud.project import delete_project, get_project_by_owner_and_name, delete_image_by_id_project
 
 router = APIRouter(prefix="", tags=["project"])
@@ -105,7 +105,7 @@ def get_all_projects_endpoint(
     }
 
 # ================= LOAD NLP MODEL: SUMMARIZATION =================
-summary_model, summary_tokenizer = load_model_and_tokenizer()
+# summary_model, summary_tokenizer = load_model_and_tokenizer()
 # ================= API: project =================
 @router.post("/projects/create")
 def create_project_endpoint(
@@ -122,15 +122,15 @@ def create_project_endpoint(
         raise HTTPException(status_code=403, detail="Bạn không có quyền tạo dự án")
     if not parsed_data.content.strip():
         raise HTTPException(status_code=400, detail="Missing or empty 'content' field")
-    summary = summarize_text(
-        text=parsed_data.content,
-        model=summary_model,
-        tokenizer=summary_tokenizer,
-        max_length= 512,
-        summary_max_length= 200,
-        num_beams= 5
-    )
-    create_project(db, parsed_data,summary, images, user.id_account)
+    # summary = summarize_text(
+    #     text=parsed_data.content,
+    #     model=summary_model,
+    #     tokenizer=summary_tokenizer,
+    #     max_length= 512,
+    #     summary_max_length= 200,
+    #     num_beams= 5
+    # )
+    create_project(db, parsed_data,"hihi", images, user.id_account)
     return {"message": "Tạo dự án thành công"}
 
 @router.delete("/projects/delete-by-owner")

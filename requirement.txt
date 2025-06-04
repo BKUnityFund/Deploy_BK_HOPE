@@ -20,8 +20,3 @@ python-docx
 redis
 
 #==== AI processor ====
-torch
-transformers
-protobuf 
-tiktoken
-sentencepiece
